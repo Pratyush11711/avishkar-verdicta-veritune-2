@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SignalPreview from "../components/SignalPreview.astro";
 const vf = [
   "20+ configurable QA parameters",
   "Fatal & non-fatal scoring with your weightage",
@@ -303,7 +302,13 @@ const faqs = [
         </p>
       </div>
       <div class="image-panel problem-image reveal">
-        <SignalPreview kind="coverage" />
+        <img
+          src="/images/problem-marbles.webp"
+          alt="A field of clear glass marbles, with only three glowing warm apricot to represent the calls nobody hears."
+          loading="lazy"
+          width="1440"
+          height="809"
+        />
       </div>
     </section>
     <section class="products-section">
@@ -322,7 +327,14 @@ const faqs = [
         </div>
         <article class="product-grid" id="verdicta">
           <div class="product-visual reveal">
-            <SignalPreview kind="quality" />
+            <img
+              class="product-art"
+              src="/images/verdicta-glass-bars.webp"
+              alt="Clear glass bars score each call, with one apricot bar marking a fatal miss."
+              loading="lazy"
+              width="1440"
+              height="809"
+            />
             <div class="product-preview">
               <div class="card-top">
                 <span class="mono">YOUR QA SCORECARD</span>
@@ -394,7 +406,14 @@ const faqs = [
             </button>
           </div>
           <div class="product-visual reveal">
-            <SignalPreview kind="sentiment" />
+            <img
+              class="product-art"
+              src="/images/veritune-waveform-cord.webp"
+              alt="A glass cord shaped like a waveform changes from cool blue to warm apricot."
+              loading="lazy"
+              width="1440"
+              height="809"
+            />
             <div class="product-preview">
               <div class="card-top">
                 <span class="mono">CUSTOMER SIGNALS</span>
@@ -418,6 +437,14 @@ const faqs = [
       </div>
     </section>
     <section class="suite-band container reveal">
+      <img
+        class="suite-art"
+        src="/images/suite-connected-orbs.webp"
+        alt="Two glass orbs, one aqua and one sky blue, connected by the same cord."
+        loading="lazy"
+        width="1440"
+        height="809"
+      />
       <div>
         <p class="eyebrow">A CLEARER PICTURE, TOGETHER</p>
         <h2>
@@ -474,7 +501,13 @@ const faqs = [
         </small>
       </div>
       <div class="image-panel reveal">
-        <SignalPreview kind="languages" />
+        <img
+          src="/images/languages-merging-cords.webp"
+          alt="Five tinted glass cords merge into one clear cord, representing a shared scorecard across languages."
+          loading="lazy"
+          width="1440"
+          height="719"
+        />
       </div>
     </section>
     <section class="numbers-section">
@@ -645,6 +678,14 @@ const faqs = [
       </div>
     </section>
     <section class="final-cta">
+      <img
+        class="cta-art"
+        src="/images/cta-found-signal.webp"
+        alt="A clear glass cord ends at one glowing apricot orb."
+        loading="lazy"
+        width="1440"
+        height="600"
+      />
       <div class="reveal">
         <p class="eyebrow">THE NEXT CONVERSATION STARTS HERE</p>
         <h2>
