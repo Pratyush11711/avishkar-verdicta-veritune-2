@@ -1,11 +1,892 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import SignalPreview from "../components/SignalPreview.astro";
+const vf = [
+  "20+ configurable QA parameters",
+  "Fatal & non-fatal scoring with your weightage",
+  "Script, hold, escalation & resolution checks",
+  "Automatic dead-air and hold thresholds",
+  "CRM tagging verification",
+  "AI summaries, dispositions & action items",
+  "Heat maps by agent, team & campaign",
+  "Call metadata & recording playback",
+];
+const cf = [
+  "Tone & emotion through the conversation",
+  "Competitor mentions, context & frequency",
+  "Churn risk scores with confidence levels",
+  "Recommended next actions",
+  "Sentiment timelines on recordings",
+  "Critical flags with weightage you control",
+  "Dashboards by risk, campaign & team",
+];
+const steps = [
+  [
+    "i01-recordings",
+    "Share your recordings",
+    "Upload a batch of calls or a CSV of recording links. Nothing to integrate.",
+  ],
+  [
+    "i02-scorecard",
+    "Make it your scorecard",
+    "We configure your QA form and agree on the customer signals that matter.",
+  ],
+  [
+    "i03-report",
+    "Get the full picture",
+    "Receive scored calls, summaries, sentiment, competitor mentions and churn flags.",
+  ],
+  [
+    "i04-review",
+    "Walk through it with us",
+    "Review the findings with your QA and CX leads, then map out a full rollout.",
+  ],
+];
+const enterprise = [
+  [
+    "i05-deployment",
+    "Your environment. Your choice.",
+    "Our cloud, your private cloud, or on-premises inside your environment.",
+  ],
+  [
+    "i06-security",
+    "Security from the start",
+    "Avishkar AI is ISO 27001 certified. Built for operations that handle customer data.",
+  ],
+  [
+    "i07-integrations",
+    "Fits into your workflow",
+    "Connect your telephony and CRM through our API, or begin with recordings and CSV.",
+  ],
+  [
+    "i08-access",
+    "The right access for every role",
+    "Separate logins for superadmins, admins, QA analysts and agents.",
+  ],
+  [
+    "i09-whitelabel",
+    "Your brand, front and centre",
+    "A white-label interface for your clients, business units and teams.",
+  ],
+  [
+    "i10-dashboards",
+    "A view that fits your operation",
+    "Explore calls processed, SIP IDs, buckets, campaigns, agents and teams.",
+  ],
+];
+const industries = [
+  [
+    "i11-healthcare",
+    "Healthcare",
+    "Consistent scripts and clear records for patient access and member services.",
+  ],
+  [
+    "i12-bpo",
+    "BPO & outsourced CX",
+    "Quality your teams can measure and confidently report to clients.",
+  ],
+  [
+    "i13-telecom",
+    "Telecom & subscriptions",
+    "Spot the conversations that put your customer relationships at risk.",
+  ],
+  [
+    "i14-finance",
+    "Financial services",
+    "Keep support and collections aligned with strict script requirements.",
+  ],
+];
+const faqs = [
+  [
+    "Do we need to integrate anything before the pilot?",
+    "No. Upload recordings or send a CSV of recording links. Integration with your telephony and CRM comes later, if you roll out.",
+  ],
+  [
+    "Can we use our existing QA scorecard?",
+    "Yes. Verdicta’s parameters, sub-parameters and weightage are configured to match the form your QA team already uses.",
+  ],
+  [
+    "Where does our call data live?",
+    "You choose: our cloud, your private cloud, or on-premises. Avishkar AI is ISO 27001 certified.",
+  ],
+  [
+    "Which languages do you support?",
+    "English, Spanish, French, German, Portuguese, Arabic, Mandarin and Japanese. Confirm availability for your languages and call types with our team during the pilot.",
+  ],
+  [
+    "Do we need both products?",
+    "No. Verdicta and Veritune work alone or together. Start with the one tied to your most pressing metric, whether that is agent quality or customer retention.",
+  ],
+  [
+    "Does this replace our QA team?",
+    "It changes their work. Instead of listening to a small sample, analysts review flagged calls and spend their time coaching agents.",
+  ],
+  [
+    "How is pricing structured?",
+    "Talk to our team about your call volume, deployment requirements and the products you need for a tailored proposal.",
+  ],
+];
 ---
 
 <Layout>
-	<Welcome />
+  <aside class="announcement">
+    Your recordings. Your scorecard.{" "}
+    <a href="#pilot">Discover the free pilot →</a>
+  </aside>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Avishkar AI home">
+        <img src="/logo-dark.webp" alt="Avishkar AI" width="150" height="42" />
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#verdicta">Verdicta</a>
+        <a href="#veritune">Veritune</a>
+        <a href="#pilot">The pilot</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="nav-contact" href="#pilot">
+        How it works →
+      </a>
+      <button class="button button-dark nav-cta" data-pilot>
+        Start a free pilot <span aria-hidden="true">↗</span>
+      </button>
+      <button
+        class="menu-toggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="live-dot"></span> CONTACT CENTRE INTELLIGENCE, BY
+          AVISHKAR AI
+        </p>
+        <h1>
+          Every conversation.
+          <br />
+          <em>A clearer picture.</em>
+        </h1>
+        <div class="hero-support">
+          <p class="hero-description">
+            Meet Verdicta and Veritune. Your QA standards. Your customers’
+            signals.
+            <br class="desktop-break" /> One clear picture of every
+            conversation.
+          </p>
+          <div class="button-row justify-center">
+            <button class="button button-dark" data-pilot>
+              Start a free pilot <span aria-hidden="true">↗</span>
+            </button>
+            <a class="button button-outline" href="#pilot">
+              See how it works <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+          <p class="hero-note">
+            Your recordings. A scored report. No integration needed.
+          </p>
+        </div>
+      </div>
+      <div class="hero-product-panel">
+        <div class="panel-heading">
+          <span class="mono">THE CONVERSATION, UNDERSTOOD</span>
+          <span class="panel-caption">
+            Verdicta + Veritune / Illustrative preview
+          </span>
+        </div>
+        <div class="hero-product-grid">
+          <div class="signal-card quality-card">
+            <div class="card-top">
+              <span class="product-label">
+                <i></i> VERDICTA
+              </span>
+              <span class="tiny-label">AGENT QUALITY</span>
+            </div>
+            <div class="signal-title">Every standard. Accounted for.</div>
+            <div class="signal-bottom">
+              <span>Script adherence</span>
+              <span class="status pass">✓ Checked</span>
+            </div>
+            <div class="mini-bars" aria-hidden="true">
+              {[
+                55, 80, 64, 92, 76, 44, 86, 67, 94, 74, 88, 61, 82, 94, 71, 89,
+                73, 96,
+              ].map((height, i) => (
+                <span
+                  style={`height:${height}%;${i === 5 ? "background:var(--ink)" : ""}`}
+                ></span>
+              ))}
+            </div>
+            <span class="example-label">ILLUSTRATIVE SIGNAL</span>
+          </div>
+          <div class="signal-card customer-card">
+            <div class="card-top">
+              <span class="product-label sky">
+                <i></i> VERITUNE
+              </span>
+              <span class="tiny-label">CUSTOMER SIGNAL</span>
+            </div>
+            <div class="signal-title">Hear what’s between the lines.</div>
+            <div class="signal-bottom">
+              <span>Competitor mentioned</span>
+              <span class="status flag">⚑ Flagged</span>
+            </div>
+            <svg viewBox="0 0 260 46" fill="none" aria-hidden="true">
+              <path
+                d="M0 29C15 29 18 15 30 21S48 38 63 26 77 5 91 18 111 35 124 22 143 5 157 23 179 42 193 25 213 10 226 21 248 31 260 10"
+                stroke="#0007cb"
+                stroke-width="2"
+              />
+              <path d="M0 43H260" stroke="#dedbd6" stroke-dasharray="3 4" />
+            </svg>
+            <span class="example-label">ILLUSTRATIVE SIGNAL</span>
+          </div>
+          <div class="hero-mini-artifact">
+            <span class="tiny-label">TWO PERSPECTIVES</span>
+            <div>
+              Quality <span>+</span> customer intelligence
+            </div>
+            <span class="muted">One conversation, understood.</span>
+          </div>
+        </div>
+        <a class="hero-composer" href="#verdicta">
+          <span>What are your calls telling you?</span>
+          <span class="composer-arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      </div>
+      <div class="hero-bottom">
+        <span>LESS SAMPLING. MORE UNDERSTANDING.</span>
+        <a href="#problem">
+          SCROLL TO EXPLORE <span>↓</span>
+        </a>
+      </div>
+    </section>
+    <div class="trust-strip">
+      <span>Built for the calls that matter.</span>
+      <div>
+        <span class="shield">◇</span> ISO 27001 certified
+      </div>
+      <div>
+        <span class="small-dot"></span> Cloud or on-premises
+      </div>
+      <div>
+        <span class="small-dot"></span> Your scorecard, at scale
+      </div>
+    </div>
+    <section class="section container split" id="problem">
+      <div class="reveal">
+        <p class="eyebrow">01 / THE BLIND SPOT</p>
+        <h2>
+          Your QA team hears
+          <br />a <em>small fraction.</em>
+          <br />
+          The rest still matters.
+        </h2>
+        <p>
+          Most contact centres manually review 1 to 5 percent of their calls.
+          Coaching, compliance and retention decisions all rest on that sample.
+        </p>
+        <p>
+          A missed disclosure. An unresolved complaint. A customer mentioning a
+          competitor. The costly problems sit in the calls nobody hears.
+        </p>
+        <p class="ink-line">
+          Verdicta and Veritune listen to all of it. <span>↗</span>
+        </p>
+      </div>
+      <div class="image-panel problem-image reveal">
+        <SignalPreview kind="coverage" />
+      </div>
+    </section>
+    <section class="products-section">
+      <div class="container">
+        <div class="section-heading text-center reveal">
+          <p class="eyebrow">TWO PERSPECTIVES. ONE CONVERSATION.</p>
+          <h2>
+            Better quality.
+            <br />
+            <em>Stronger customer relationships.</em>
+          </h2>
+          <p>
+            Understand both sides of every call, with two products that work
+            <br class="desktop-break" /> beautifully together. Or independently.
+          </p>
+        </div>
+        <article class="product-grid" id="verdicta">
+          <div class="product-visual reveal">
+            <SignalPreview kind="quality" />
+            <div class="product-preview">
+              <div class="card-top">
+                <span class="mono">YOUR QA SCORECARD</span>
+                <span class="preview-badge">Illustrative preview</span>
+              </div>
+              <div class="score-row">
+                <span>Script adherence</span>
+                <span class="status pass">Pass</span>
+              </div>
+              <div class="score-row">
+                <span>Required disclosure</span>
+                <span class="status fatal">Fatal flag</span>
+              </div>
+              <div class="score-row">
+                <span>CRM record updated</span>
+                <span class="status pass">Pass</span>
+              </div>
+              <div class="preview-footer">
+                Your parameters. Your weightage. Your standard.
+              </div>
+            </div>
+          </div>
+          <div class="product-copy reveal">
+            <p class="product-tag">
+              <i></i> VERDICTA <span>/ AGENT QUALITY</span>
+            </p>
+            <h2>
+              Your QA standard.
+              <br />
+              <em>On every call.</em>
+            </h2>
+            <p>
+              Score every recorded call against the framework you already use.
+              See where agents follow the process and where they drift. Stop
+              sampling. Start coaching.
+            </p>
+            <ul class="feature-list">
+              {vf.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+            <button class="text-link" data-pilot data-interest="Verdicta">
+              Explore Verdicta on your calls <span>↗</span>
+            </button>
+          </div>
+        </article>
+        <article class="product-grid reverse" id="veritune">
+          <div class="product-copy reveal">
+            <p class="product-tag sky">
+              <i></i> VERITUNE <span>/ CUSTOMER INTELLIGENCE</span>
+            </p>
+            <h2>
+              Know who’s leaving.
+              <br />
+              <em>Before they do.</em>
+            </h2>
+            <p>
+              Listen to the customer side of the conversation. Follow their
+              changing tone, spot competitor mentions and understand churn risk,
+              with a clear next action.
+            </p>
+            <ul class="feature-list sky">
+              {cf.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+            <button class="text-link" data-pilot data-interest="Veritune">
+              Explore Veritune on your calls <span>↗</span>
+            </button>
+          </div>
+          <div class="product-visual reveal">
+            <SignalPreview kind="sentiment" />
+            <div class="product-preview">
+              <div class="card-top">
+                <span class="mono">CUSTOMER SIGNALS</span>
+                <span class="preview-badge">Illustrative preview</span>
+              </div>
+              <div class="score-row">
+                <span>Competitor mention</span>
+                <span class="status flag">Detected</span>
+              </div>
+              <div class="score-row">
+                <span>Customer sentiment</span>
+                <span class="status fatal">Frustrated</span>
+              </div>
+              <div class="next-action">
+                <span class="mono">RECOMMENDED NEXT ACTION</span>
+                <p>Follow up on the unresolved complaint.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="suite-band container reveal">
+      <div>
+        <p class="eyebrow">A CLEARER PICTURE, TOGETHER</p>
+        <h2>
+          How your agents performed.
+          <br />
+          <em>How your customers felt.</em>
+        </h2>
+        <p>One or both. The same calls. The same dashboard.</p>
+        <div class="suite-tags">
+          <span>
+            <i></i> Verdicta
+          </span>
+          <span>+</span>
+          <span>
+            <i class="sky-dot"></i> Veritune
+          </span>
+        </div>
+      </div>
+    </section>
+    <section class="section container split languages">
+      <div class="reveal">
+        <p class="eyebrow">MANY LANGUAGES. ONE STANDARD.</p>
+        <h2>
+          Your customers speak.
+          <br />
+          <em>We understand.</em>
+        </h2>
+        <p>
+          Global conversations shouldn’t become QA blind spots. Give regional
+          teams and multilingual operations a consistent way to measure quality
+          and customer sentiment.
+        </p>
+        <ul class="simple-list">
+          <li>One scorecard across the languages you operate in</li>
+          <li>Agent quality and customer sentiment, side by side</li>
+          <li>Compare the picture across regions</li>
+        </ul>
+        <div class="language-list">
+          {[
+            "English",
+            "Español",
+            "Français",
+            "Deutsch",
+            "Português",
+            "العربية",
+            "中文",
+            "日本語",
+          ].map((l) => (
+            <span>{l}</span>
+          ))}
+        </div>
+        <small class="muted">
+          Confirm language availability for your calls during the pilot.
+        </small>
+      </div>
+      <div class="image-panel reveal">
+        <SignalPreview kind="languages" />
+      </div>
+    </section>
+    <section class="numbers-section">
+      <div class="container">
+        <div class="section-heading text-center reveal">
+          <p class="eyebrow">BUILT FOR REAL OPERATIONS</p>
+          <h2>
+            Enterprise scale.
+            <br />
+            <em>Everyday impact.</em>
+          </h2>
+        </div>
+        <div class="stats-grid reveal">
+          {[
+            {
+              n: 99,
+              s: "%+",
+              l: "of recorded calls analysed",
+              d: "Beyond the 1–5% manual sample",
+            },
+            {
+              n: 1,
+              s: "M",
+              l: "call minutes analysed",
+              d: "A clearer picture with each one",
+            },
+            {
+              n: 80,
+              s: "%",
+              l: "less QA review time",
+              d: "At a live deployment",
+            },
+            {
+              n: 5,
+              s: "+",
+              l: "enterprise contact centres",
+              d: "Running in production",
+            },
+          ].map((stat, i) => (
+            <div class:list={["stat", { "accent-stat": i === 2 }]}>
+              <div class="stat-number">
+                <span data-count={stat.n}>{stat.n}</span>
+                {stat.s}
+              </div>
+              <h3>{stat.l}</h3>
+              <p>{stat.d}</p>
+            </div>
+          ))}
+        </div>
+        <p class="credibility">
+          Built by <strong>Avishkar AI</strong>, the applied AI team behind
+          systems running across
+          <br class="desktop-break" /> <strong>30,000 ATMs</strong> and{" "}
+          <strong>68,000 telecom towers.</strong>
+        </p>
+      </div>
+    </section>
+    <section class="section container" id="pilot">
+      <div class="section-heading text-center reveal">
+        <p class="eyebrow">YOUR CALLS. YOUR PROOF.</p>
+        <h2>
+          See what you’re missing.
+          <br />
+          <em>Before you commit.</em>
+        </h2>
+        <p>
+          A free pilot, built around the recordings and QA framework you already
+          have.
+        </p>
+      </div>
+      <div class="steps-grid">
+        {steps.map(([icon, title, description], i) => (
+          <article class="step-card reveal">
+            <div class="step-top">
+              <span class="mono">0{i + 1}</span>
+            </div>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="text-center pilot-action">
+        <button class="button button-dark" data-pilot>
+          Start your free pilot <span>↗</span>
+        </button>
+        <a class="button button-outline" href="#faq">
+          A few questions? →
+        </a>
+        <p class="muted">No integration needed to get started.</p>
+      </div>
+    </section>
+    <section class="enterprise-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">ENTERPRISE READY, BY DESIGN</p>
+          <h2>
+            At home in
+            <br />
+            <em>your environment.</em>
+          </h2>
+          <p>
+            Your call recordings carry customer data. You decide where
+            <br class="desktop-break" /> the products run, and who sees what.
+          </p>
+        </div>
+        <div class="enterprise-grid">
+          {enterprise.map(([icon, title, description]) => (
+            <article class="enterprise-card reveal">
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+        <div class="integration-note">
+          <span class="mono">START SIMPLE. CONNECT WHEN YOU’RE READY.</span>
+          <p>
+            Recording uploads <span>·</span> CSV of recording links{" "}
+            <span>·</span> API integration
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="section container">
+      <div class="section-heading text-center reveal">
+        <p class="eyebrow">WHERE EVERY CALL COUNTS</p>
+        <h2>
+          Built for your
+          <br />
+          <em>kind of complexity.</em>
+        </h2>
+        <p>
+          For contact centres handling 300,000+ call minutes a month,
+          <br class="desktop-break" /> where manual QA can’t keep up.
+        </p>
+      </div>
+      <div class="industry-grid">
+        {industries.map(([icon, title, description]) => (
+          <article class="industry-card reveal">
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="faq-section container" id="faq">
+      <div class="reveal">
+        <p class="eyebrow">A LITTLE MORE CLARITY</p>
+        <h2>
+          Good questions.
+          <br />
+          <em>Clear answers.</em>
+        </h2>
+        <p>Something else on your mind?</p>
+        <button class="text-link" data-pilot>
+          Talk to our team <span>↗</span>
+        </button>
+      </div>
+      <div class="faq-list reveal">
+        {faqs.map(([q, a]) => (
+          <details name="faq">
+            <summary>
+              {q}
+              <span aria-hidden="true">+</span>
+            </summary>
+            <p>{a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+    <section class="final-cta">
+      <div class="reveal">
+        <p class="eyebrow">THE NEXT CONVERSATION STARTS HERE</p>
+        <h2>
+          Find out what
+          <br />
+          <em>your sample is missing.</em>
+        </h2>
+        <p>
+          Send us a batch of recorded calls. We’ll help you find the quality
+          <br class="desktop-break" /> gaps and customer signals hiding in plain
+          sight.
+        </p>
+        <div class="button-row justify-center">
+          <button class="button button-dark" data-pilot>
+            Start a free pilot <span>↗</span>
+          </button>
+          <button class="button button-outline" data-pilot>
+            Talk to our team <span>↗</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-main">
+      <div>
+        <a class="brand" href="#" aria-label="Avishkar AI home">
+          <img
+            src="/logo-dark.webp"
+            width="150"
+            height="42"
+            alt="Avishkar AI"
+            loading="lazy"
+          />
+        </a>
+        <p>
+          Applied AI engineering for operations
+          <br />
+          that cannot afford downtime.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="#verdicta">Verdicta</a>
+        <a href="#veritune">Veritune</a>
+        <a href="#pilot">The pilot</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <span class="certification">◇ &nbsp; ISO 27001 certified</span>
+    </div>
+    <div class="container footer-bottom">
+      <span>
+        © {new Date().getFullYear()} Avishkar AI. All rights reserved.
+      </span>
+      <span>Verdicta & Veritune. Two perspectives. One clear picture.</span>
+      <a href="#">Back to top ↑</a>
+    </div>
+  </footer>
+  <dialog id="pilot-dialog" aria-labelledby="pilot-title">
+    <button class="dialog-close" aria-label="Close pilot request">
+      ×
+    </button>
+    <p class="eyebrow">LET’S FIND YOUR SIGNAL</p>
+    <h2 id="pilot-title">
+      Your calls.
+      <br />
+      <em>Your free pilot.</em>
+    </h2>
+    <p>
+      Tell us a little about your team. Prepare your pilot brief to share with
+      Avishkar AI.
+    </p>
+    <form id="pilot-form">
+      <label>
+        Your name
+        <input
+          name="name"
+          autocomplete="name"
+          required
+          placeholder="Alex Morgan"
+        />
+      </label>
+      <label>
+        Work email
+        <input
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="alex@company.com"
+        />
+      </label>
+      <label>
+        Company
+        <input
+          name="company"
+          autocomplete="organization"
+          required
+          placeholder="Company name"
+        />
+      </label>
+      <div class="form-grid">
+        <label>
+          Interested in
+          <select name="product">
+            <option>Both products</option>
+            <option>Verdicta</option>
+            <option>Veritune</option>
+          </select>
+        </label>
+        <label>
+          Monthly call minutes
+          <select name="volume">
+            <option>Under 300,000</option>
+            <option selected>300,000–1 million</option>
+            <option>Over 1 million</option>
+          </select>
+        </label>
+      </div>
+      <button type="submit" class="button button-dark">
+        Download pilot brief <span>↓</span>
+      </button>
+      <small>
+        Your details stay in your browser. This downloads a request; it does not
+        submit it.
+      </small>
+      <p id="form-status" role="status" hidden></p>
+    </form>
+  </dialog>
+  <script>
+    const menu = document.querySelector<HTMLButtonElement>(".menu-toggle")!;
+    const links = document.querySelector("#nav-links")!;
+    menu.addEventListener("click", () => {
+      const open = menu.getAttribute("aria-expanded") !== "true";
+      menu.setAttribute("aria-expanded", String(open));
+      menu.setAttribute(
+        "aria-label",
+        open ? "Close navigation" : "Open navigation",
+      );
+      links.classList.toggle("open", open);
+    });
+    links.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        links.classList.remove("open");
+        menu.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-label", "Open navigation");
+      }),
+    );
+    const dialog = document.querySelector<HTMLDialogElement>("#pilot-dialog")!;
+    const form = document.querySelector<HTMLFormElement>("#pilot-form")!;
+    document.querySelectorAll<HTMLButtonElement>("[data-pilot]").forEach((b) =>
+      b.addEventListener("click", () => {
+        (form.elements.namedItem("product") as HTMLSelectElement).value =
+          b.dataset.interest || "Both products";
+        dialog.showModal();
+        document.body.classList.add("dialog-open");
+      }),
+    );
+    document
+      .querySelector(".dialog-close")!
+      .addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => {
+      const r = dialog.getBoundingClientRect();
+      if (
+        e.clientX < r.left ||
+        e.clientX > r.right ||
+        e.clientY < r.top ||
+        e.clientY > r.bottom
+      )
+        dialog.close();
+    });
+    dialog.addEventListener("close", () =>
+      document.body.classList.remove("dialog-open"),
+    );
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const content = [
+        "AVISHKAR AI — FREE PILOT REQUEST",
+        "",
+        ...Array.from(data.entries()).map(([k, v]) => `${k}: ${v}`),
+        "",
+        "Please contact me to discuss a pilot using our recordings and QA scorecard.",
+      ].join("\n");
+      const url = URL.createObjectURL(
+        new Blob([content], { type: "text/plain;charset=utf-8" }),
+      );
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "avishkar-pilot-request.txt";
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      const status = document.querySelector<HTMLElement>("#form-status")!;
+      status.hidden = false;
+      status.textContent =
+        "Your pilot brief is ready. Share the downloaded file with your Avishkar AI contact. No request has been submitted.";
+    });
+    document.querySelectorAll("details").forEach((d) =>
+      d.addEventListener("toggle", () => {
+        if (d.open)
+          document.querySelectorAll("details").forEach((o) => {
+            if (o !== d) o.open = false;
+          });
+      }),
+    );
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              observer.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => {
+        el.classList.add("will-reveal");
+        observer.observe(el);
+      });
+      const counts = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              const el = e.target as HTMLElement;
+              const n = Number(el.dataset.count);
+              const start = performance.now();
+              const tick = (now: number) => {
+                const t = Math.min((now - start) / 1100, 1);
+                el.textContent = String(
+                  Math.round(n * (1 - Math.pow(1 - t, 3))),
+                );
+                if (t < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+              counts.unobserve(el);
+            }
+          }),
+        { threshold: 1 },
+      );
+      document
+        .querySelectorAll("[data-count]")
+        .forEach((el) => counts.observe(el));
+    }
+  </script>
 </Layout>
